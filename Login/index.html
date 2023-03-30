@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+	<div class="init">
+		<h2>Login</h2> <button id="btnVoltar" onclick="voltaParaPaginaPrincipal()">Voltar</button>
+	</div>
+	
+	<form onsubmit="return login(document.getElementById('username').value, document.getElementById('password').value, document.getElementById('savePassword').checked)">
+		<label for="username">Nome de Usuário:</label>
+		<input type="text" id="username" name="username" required><br><br>
+
+		<label for="password">Senha:</label>
+		<input type="password" id="password" name="password" required><br><br>
+
+		<label for="savePassword">Salvar Senha:</label>
+		<input type="checkbox" id="savePassword" name="savePassword"><br><br>
+		<input type="submit" value="Entrar">
+	</form>
+	
+
+	<h2>Redefinição de Senha</h2>
+	<form onsubmit="return resetPassword(document.getElementById('usernameReset').value, document.getElementById('email').value)">
+		<label for="usernameReset">Nome de Usuário:</label>
+		<input type="text" id="usernameReset" name="usernameReset" required><br><br>
+
+		<label for="email">E-mail:</label>
+		<input type="email" id="email" name="email" required><br><br>
+
+		<input type="submit" value="Enviar Código de Redefinição">
+
+	</form>
+	
+
+
+
+	<script src="script.js"></script>
+</body>
+</html>
