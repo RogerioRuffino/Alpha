@@ -1,0 +1,158 @@
+/* estilo da seção de busca de cotações */
+#busca-cotacoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.init{
+  background-color: rgb(66,92,125);
+  color:white;
+  border: 10px white;
+  width:100%;
+  display:inline-flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 2px;
+  
+  }
+  .calendar{
+    background-color: rgb(187, 193, 201);
+    padding:12px;
+    border: 1px red;
+  width:95%;
+  display:inline-flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 2px;
+ 
+
+  }
+
+
+
+
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  background-color: aliceblue;
+  font-size: 1.2rem;
+  border-radius:3px;
+  align-self:center;
+  padding: 8px;
+  ;
+ 
+}
+
+
+input[type="date"] {
+  background-color: aliceblue;
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+button[type="submit"] {
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: #1E90FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* estilo da seção de exibição da cotação */
+#cotacao-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 1.rem;
+  margin-bottom: 20px;
+}
+
+#cotacao {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.error {
+  color: rgb(36, 28, 28);
+}
+
+/* estilo da seção de histórico de cotações */
+#historico-cotacoes {
+  margin-top: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: rgb(66,92,125);
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th:first-child, td:first-child {
+  font-weight: bold;
+}
+
+th:last-child, td:last-child {
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgb(225, 228, 189);
+}
+
+button {
+  order:1;
+  /* margin-right: 3%; */
+  height: 1%;
+  width:15%;
+  text-align: center;
+  background-color: rgb(66,92,125);
+  color: white;
+  padding: 8px 8px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 5px #199f19;
+  transition-duration: 0.3s;
+  align-self: center;
+  
+
+}
+
+button:hover {
+  background-color: #4b5f27;
+}
+button:active {
+  box-shadow: none;
+  transform: translateY(10px);
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+    
+  <div class="init">
+		<h3>Cotação do dólar comercial</h3> 
+    <button id="btnVoltar" onclick="voltaParaPaginaPrincipal()">Voltar</button>
+  </div>
+
+  
+
+  </head>
+  <body>
+    <div class="calendar">
+      <label for="data-input">Selecione a data:</label>
+      <input type="date" id="data-input" name="data-input" pattern="\d{2}-\d{2}-\d{4}">
+      <button id="buscar-button">Buscar</button>
+
+
+    </div>
+  
+
+    <div id="cotacao"></div>
+    <table id="tabela-cotacoes">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Cotação do dólar comercial</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <script src="script.js"></script>
+  </body>
+</html>
