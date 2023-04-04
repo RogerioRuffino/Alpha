@@ -27,14 +27,14 @@ const callPtax = document.getElementById('ptax');
 callPtax.addEventListener('click', () => {
   // code to call another program
   // for example, redirect to another HTML page:
-  window.location.href = 'BC/Ptax/index.html';
+  window.location.href = 'Ptax/index.html';
 });
 
 const callDolar = document.getElementById('dolar');
 callDolar.addEventListener('click', () => {
   // code to call another program
   // for example, redirect to another HTML page:
-  window.location.href = 'BC/Dolar/index.html';
+  window.location.href = 'Dolar/index.html';
 });
 
 
