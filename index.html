@@ -1,148 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://kit.fontawesome.com/291aa0a235.js" crossorigin="anonymous"></script>
-
-    <title>Document</title>
-    <!-- <title>screenCommodities</title> -->
+  <link rel="stylesheet" href="style.css">
     
-</head>
- <body>
-    <nav>
-        <ul class="menu">
-          
-          <li class="logo"><a href="#"><img src="Img/alphalogo.jpg" alt="Reference image"></a></li>
-          <li class="item"><a href="#">Home</a></li>
-          
-          <!-- ==================================== -->
-          
-           <li class="item has-submenu">
-            <a tabindex="0">Início</a>
-            <ul class="submenu">
-              <li class="subitem" id="ptax"><a href="#">Cotação da Ptax</a></li>
-              <li class="subitem" id="dolar"><a href="#">Cotação do dólar</a></li>
-              <li class="subitem"><a href="#">Próximos vencimentos</a></li>
-              <li class="subitem"><a href="#">Gráficos</a></li>
-            </ul>
-          </li> 
-          
-          <!-- ======================================== -->
+  <div class="init">
+		<h3>Cotação do dólar comercial</h3> 
+    <button id="salvar-button" onclick="salvarCotacoes()">Salvar</button>
 
-          <li class="item has-submenu">
-          <a tabindex="0">Cadastro</a>
-          <ul class="submenu">
-              <li class="subitem"><a href="#">Fornecedores</a></li>
-              <li class="subitem"><a href="#">Produtores</a></li> 
-              
-              <li class="subitem has-subsubmenu" >
-                <a tabindex="0">Insumos</a>
-                  <ul class="subsubmenu" >
-                    <li class="subsubitem"><a href="#">Fertilizantes</a></li>
-                    <li class="subsubitem"><a href="#">Sementes</a></li>
-                    <li class="subsubitem"><a href="#">Defensivos</a></li>
-                    <li class="subsubitem"><a href="#">Outros</a></li> 
-                  </ul>
-              </li>
+    <button id="btnVoltar" onclick="voltaParaPaginaPrincipal()">Voltar</button>
+  </div>
 
-              <li class="subitem has-subsubmenu">
-                <a tabindex="0">Clientes</a>               
-                  <ul class="subsubmenu" >
-                    <li class="subsubitem"><a href="#">Cliente 1</a></li>
-                    <li class="subsubitem"><a href="#">Cliente 2</a></li>
-                    <li class="subsubitem"><a href="#">Cliente 3</a></li>
-                    <li class="subsubitem"><a href="#">Cliente n</a></li>
-                  </ul>
-              </li>
-              </ul></li>  
-         
-              <!-- ================================= -->
-            
-             <li class="item has-submenu">
-              <a tabindex="0">Negociação</a>
-              <ul class="submenu">
-               
-                  <li class="subitem"><a href="#">Safra 19/20</a></li>
-                  <li class="subitem"><a href="#">Safra 20/21</a></li>
-                  <li class="subitem"><a href="#">Safra 21/22</a></li>
-                  <li class="subitem"><a href="#">Safra 22/23</a></li>
-                  <li class="subitem"><a href="#">Histórico</a></li>
-              </ul>
-            </li>
-             <!-- ================================= -->
-
-             <li class="item has-submenu">
-             <a tabindex="0">Financeiro</a>
-             <ul class="submenu">
-            
-            
-                  <!-- <li class="subitem"><a>Alpha</a> -->
-                     
-                        
-                        <li class="subitem has-subsubmenu" >
-                          <a tabindex="0">Contas a Pagar</a>
-                        
-                            <ul class="subsubmenu"  >
-                            <li class="subsubitem"><a href="#">2019<li class="subsubitem"><a href="#">2020</a></li>
-                            <li class="subsubitem"><a href="#">2021</a></li>
-                            <li class="subsubitem"><a href="#">2022</a></li>
-                            <li class="subsubitem"><a href="#">2023</a></li>
-                            </ul>
-                      </li>
-                      
-                      <li class="subsubitem has-subsubmenu" >
-                        <a tabindex="0">Contas a Receber</a>
-                        <ul class="subsubmenu" >
-                          <li class="subsubitem"><a href="#">2019<li class="subsubitem"><a href="#">2020</a></li>
-                          <li class="subsubitem"><a href="#">2021</a></li>
-                          <li class="subitem"><a href="#">2022</a></li>
-                          <li class="subitem"><a href="#">2023</a></li>
-                        </ul>
-                      </li> 
-                      
-
-                      <li class="subsubitem has-subsubmenu" >
-                        <a tabindex="0">Produtores</a>
-                        <ul class="subsubmenu" >
-                          <li class="subsubitem"><a href="#">001<li class="subsubitem"><a href="#">002</a></li>
-                          <li class="subsubitem"><a href="#">003</a></li>
-                          <li class="subsubitem"><a href="#">004</a></li>
-                          <li class="subsubitem"><a href="#">00n</a></li>
-                        </ul>
-                      </li> 
-<!-- 
-                      <li class="subsubitem has-subsubmenu">
-                        <a tabindex="0" >Pedidos</a>
-                        <ul class="subsubmenu">
-                            <li><a href="#">Cliente 1</a></li>
-                            <li><a href="#">Cliente 2</a></li>
-                            <li><a href="#">Cliente 3</a></li>
-                            <li><a href="#">Cliente n</a></li>
-                        </ul></li> -->
-                      
-                    
-                </ul></li> 
-
-
-<!-- ---------------------------------------------------- -->
-          
   
-          <li class="item" id="contato"><a href="#">Contato</a></li>
-          <li class="item button" id="login"><a href="#">Log In</a></li>
-          <li class="item button secondary" id="signup"><a href="#">Cadastrar</a></li>
-          <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-        </ul>
-      </nav>   
-<!-- ================================================================================================== -->
+
+  </head>
+  <body>
+    <div class="calendar">
+      <label for="data-input">Selecione a data:</label>
+      <input type="date" id="data-input" name="data-input" pattern="\d{2}-\d{2}-\d{4}">
+      <button id="buscar-button">Buscar</button>
 
 
-<script src="script.js"></script> 
-    
-</body>
+    </div>
+  
+
+    <div id="cotacao"></div>
+    <table id="tabela-cotacoes">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Cotação do dólar comercial</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <script src="script.js"></script>
+  </body>
 </html>
