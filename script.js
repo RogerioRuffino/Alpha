@@ -2,6 +2,13 @@ const toggle = document.querySelector(".toggle");
 const menu = document.querySelector(".menu");
 const submenu = document.querySelector('.submenu');
 
+const callProdutores = document.getElementById('produtores');
+callProdutores.addEventListener('click', () => {
+  // code to call another program
+  // for example, redirect to another HTML page:
+  window.location.href = 'CadastrarProdutor/index.html';
+});
+
 const callContato = document.getElementById('contato');
 callContato.addEventListener('click', () => {
   // code to call another program
