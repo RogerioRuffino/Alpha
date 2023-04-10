@@ -1,0 +1,106 @@
+.popup {
+    display: none;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 120%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup h3 {
+    margin-top: 0;
+  }
+  
+  .popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .popup form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+  }
+  
+  .popup form input[type="text"],
+  .popup form input[type="email"],
+  .popup form input[type="tel"],
+  .popup form input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid gray;
+  }
+  
+  .popup form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #142a15;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    
+  }
+  .clientes{
+    background-color: rgb(66,92,125);
+    color:white;
+    border: 10px white;
+    width:100%;
+    padding: 20px;
+    display:inline-flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 2px;
+    
+    } 
+  .popup form button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .popup button#btn_fechar_popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  button {
+    order:1;
+    /* margin-right: 3%; */
+    height: 1%;
+    width:10%;
+    text-align: center;
+    background-color: rgb(66,92,125);
+    color: white;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 5px #199f19;
+    transition-duration: 0.3s;
+    align-self: center;
+    
+  
+  }
+  
+  button:hover {
+    background-color: #4b5f27;
+  }
+  button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
