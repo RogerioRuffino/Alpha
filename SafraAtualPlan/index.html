@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/291aa0a235.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>document</title>
+</head>
+<body>
+    <nav>
+        <img class="logo" src="/Img/alphalogo.jpg" alt="Reference image"></li>
+
+      	<select class="sel1" id="clientes">
+          <option value="">Selecione um cliente</option>
+        </select>
+
+        <select class="sel1" id="safra">
+        <!-- <option disabled selected>Selecione uma Safra</option> -->
+        <option value="22/23">Safra 22/23</option>
+        <option value="19/20">Safra 21/22</option>
+        <option value="20/21">Safra 20/21</option>
+        <option value="21/22">Safra 19/20</option>
+        <option value="23/24">Safra 23/24</option>
+        <option value="25/26">Safra 25/26</option>
+        <option value="26/27">Safra 26/27</option>
+        </select>
+
+        <button type="button" id="btn_adicionar_cliente">+ Cliente</button>
+        <button id="btnVoltar" onclick="voltaParaPaginaPrincipal()">Voltar</button>
+
+        
+	</nav>
+<!-- ======================================================== -->
+<main>
+  <div class="card">
+        <div class="line1">
+        <select class="sel2" id="produto" >
+					<option disabled selected>Produto</option>
+					<option value="produto1">Produto 1</option>
+					<option value="produto2">Produto 2</option>
+					<option value="produto3">Produto 3</option>
+				</select>
+
+        <select class="sel2" id="embalagem">
+          <option disabled selected>Embalagem</option>
+          <option value="embalagem1">Embalagem 1</option>
+          <option value="embalagem2">Embalagem 2</option>
+          <option value="embalagem3">Embalagem 3</option>
+        </select>
+
+        <select class="sel2" id="segmento">
+          <option disabled selected>Segmento</option>
+          <option value="segmento1">Segmento 1</option>
+          <option value="segmento2">Segmento 2</option>
+          <option value="segmento3">Segmento 3</option>
+        </select>
+
+        <input class="sel2"  type="number" id="volume" placeholder="Volume">
+
+        <select class="sel2" id="fornecedor">
+          <option disabled selected>Fornecedor</option>
+          <option value="fornecedor1">Fornecedor 1</option>
+          <option value="fornecedor2">Fornecedor 2</option>
+          <option value="fornecedor3">Fornecedor 3</option>
+        </select>
+
+        <input class="sel2" type="number" id="valorunitario" placeholder="Valor Unitário">
+
+        <select class="sel2" id="unidade">
+          <option disabled selected>Unidade</option>
+          <option value="unidade1">Unidade 1</option>
+          <option value="unidade2">Unidade 2</option>
+          <option value="unidade3">Unidade 3</option>
+        </select>
+
+        <!-- <input class="sel2" type="number" id="valortotal" placeholder="Valor Total"> -->
+		<!-- <input class="sel2" type="date" id="vencimento" > -->
+        <!-- Campo de entrada de texto -->
+        <input class="sel2" type="text" id="data-text" name="data" value="Vencimento" onclick="mostrarCampoData()">
+        <!-- Campo de entrada de data -->
+		<input class="sel2" type="date" id="vencimento" name="data" style="display:none;"  onclick="(function() { this.type = 'date'; this.focus(); })()">
+
+        <!-- <input class="sel2" type="date" id="vencimento" name="data" style="display:none;" onclick="(function() { this.type = 'date'; this.focus(); })()"> -->
+            
+        <span>        </span>
+        <button type="button" onclick="produto.salvar()" id="btn1">Salvar</button>
+        <button type="button" onclick="produto.limpar()">Limpar</button>
+        
+
+    </div>
+  
+
+   
+    
+  </div>
+<br>
+  <!-- _________________________________ -->
+  <div class="line">
+  </div>
+  <!-- _________________________________ -->
+
+
+  <div class="content">
+    <table>
+      <thead>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Embalagem</th>
+        <th>Segmento</th>
+        <th>Volume</th>
+        <th>Fornecedor</th>
+        <th>Valor Unitário</th>
+        <th>Unidade</th>
+        <th>Valor Total</th>
+        <th>Vencimento</th>
+        <th>Ações</th>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td >
+            <i onclick="produto.salvar()"   class="fa-sharp fa-solid fa-cart-plus"></i>
+            <i onclick="produto.limpar()" class="fa-sharp fa-solid fa-trash"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+  
+<script src="script.js"></script>
+    
+</body>
+</html>
