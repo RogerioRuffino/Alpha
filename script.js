@@ -44,6 +44,13 @@ callDolar.addEventListener('click', () => {
   window.location.href = 'Dolar/index.html';
 });
 
+const callSafraAtual = document.getElementById('safraAtual');
+callSafraAtual.addEventListener('click', () => {
+  // code to call another program
+  // for example, redirect to another HTML page:
+  window.location.href = 'SafraAtualPlan/index.html';
+});
+
 
 
 
