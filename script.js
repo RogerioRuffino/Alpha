@@ -1,160 +1,274 @@
-const toggle = document.querySelector(".toggle");
-const menu = document.querySelector(".menu");
-const submenu = document.querySelector('.submenu');
-
-const callProdutores = document.getElementById('produtores');
-callProdutores.addEventListener('click', () => {
+const callVolta = document.getElementById('btnVoltar');
+callVolta.addEventListener('click', () => {
   // code to call another program
   // for example, redirect to another HTML page:
-  window.location.href = 'CadastrarProdutor/index.html';
+  window.location.href = '/Alpha/index.html';
 });
-
-const callContato = document.getElementById('contato');
-callContato.addEventListener('click', () => {
+       
+const callCadastrarProdutor = document.getElementById('btn_adicionar_cliente');
+callCadastrarProdutor.addEventListener('click', () => {
   // code to call another program
   // for example, redirect to another HTML page:
-  window.location.href = 'Contato/index.html';
-});
-
-const callLogin = document.getElementById('login');
-callLogin.addEventListener('click', () => {
-  // code to call another program
-  // for example, redirect to another HTML page:
-  window.location.href = 'Login/index.html';
-});
-
-const callSignup = document.getElementById('signup');
-callSignup.addEventListener('click', () => {
-  // code to call another program
-  // for example, redirect to another HTML page:
-  window.location.href = 'Signup/index.html';
-});
-
-const callPtax = document.getElementById('ptax');
-callPtax.addEventListener('click', () => {
-  // code to call another program
-  // for example, redirect to another HTML page:
-  window.location.href = 'Ptax/index.html';
-});
-
-const callDolar = document.getElementById('dolar');
-callDolar.addEventListener('click', () => {
-  // code to call another program
-  // for example, redirect to another HTML page:
-  window.location.href = 'Dolar/index.html';
-});
-
-const callSafraAtual = document.getElementById('safraAtual');
-callSafraAtual.addEventListener('click', () => {
-  // code to call another program
-  // for example, redirect to another HTML page:
-  window.location.href = 'SafraAtualPlan/index.html';
+  window.location.href = '/Alpha/CadastrarProdutor/index.html';
 });
 
 
+  
 
 
-/* Toggle mobile menu */
-function toggleMenu() {
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
+function mostrarCampoData() {
+    
+    document.getElementById("data-text").style.display = "none";
+  
+    document.getElementById("vencimento").style.display = "block";
+  }
+
+class Produto {
+    constructor() {
+        this.id = 1;
+        this.arrayProdutos = [];
+        this.editId = null;
+        // this.limpar();   
+    }
+
+    salvar() {
+
+        let produto = this.lerDados();
+
+        if (this.validaCampos(produto)) { 
+
+            if(this.editId == null) {
+                this.adicionar(produto); 
+            }
+            else {
+                this.atualizar(this.editId, produto);
+            }
+
+                 
+        }
+        //  console.log(produto);
+        // console.log(this.arrayProdutos);
         
-        // adds the menu (hamburger) icon 
-        toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
-    } else {
-        menu.classList.add("active");
+        this.listaTabela();
+        this.limpar();
+    } 
+
+        listaTabela(){
+            let tbody = document.getElementById('tbody');
+            tbody.innerText = '';
+
+            for(let i = 0; i < this.arrayProdutos.length; i++ ) {
+                console.log(this.arrayProdutos[i]);
+                let tr = tbody.insertRow();
+                // console.log(this.arrayProdutos);
+
+                let td_id = tr.insertCell();
+                let td_produto = tr.insertCell();
+                let td_embalagem = tr.insertCell();
+                let td_segmento = tr.insertCell();
+                let td_volume = tr.insertCell();
+                let td_fornecedor = tr.insertCell();
+                let td_valorunitario = tr.insertCell();
+                let td_unidade = tr.insertCell();
+                let td_valortotal = tr.insertCell();
+                let td_vencimento = tr.insertCell();
+                let td_acoes = tr.insertCell();
+                // console.log (td_id,td_commoditie,td_precosc)
+
+
+                td_id.innerText = this.arrayProdutos[i].id;     
+                td_produto.innerText = this.arrayProdutos[i].produto;
+                td_embalagem.innerText = this.arrayProdutos[i].embalagem;
+                td_segmento.innerText = this.arrayProdutos[i].segmento;
+                td_volume.innerText = this.arrayProdutos[i].volume.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                td_fornecedor.innerText = this.arrayProdutos[i].fornecedor;
+                td_valorunitario.innerText = this.arrayProdutos[i].valorunitario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                td_unidade.innerText = this.arrayProdutos[i].unidade;
+              
+                td_valortotal.innerText = this.arrayProdutos[i].valortotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                const data = new Date(this.arrayProdutos[i].vencimento);
+                const dia = String(data.getDate()).padStart(2, '0');
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                const ano = data.getFullYear();
+                const dataFormatada = `${dia}-${mes}-${ano}`;
+                td_vencimento.innerText = dataFormatada;    
         
-        // adds the close (x) icon 
-        toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+{/* <i class="fa-solid fa-pen-to-square"></i> */}
+                let iconEdit = document.createElement('i');
+                iconEdit.classList.add('fas', 'fa-pen-to-square', 'icon');
+                iconEdit.setAttribute("onclick", "produto.preparaEdicao(" + JSON.stringify(this.arrayProdutos[i]) + ")");
+
+                let iconDelete = document.createElement('i');
+                iconDelete.classList.add('fas', 'fa-trash', 'icon');
+                iconDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
+
+                td_acoes.appendChild(iconEdit);
+                td_acoes.appendChild(iconDelete);
+              
+            }
+        }
+
+    adicionar(produto) {
+        
+        // produto.produto = parseFloat(produto.produto);
+        // produto.embalagem = parseFloat(produto.embalagem);
+        // produto.segmento = parseFloat(produto.segmento);
+        produto.volume = parseFloat(produto.volume);
+        // produto.fornecedor = parseFloat(produto.fornecedor);
+        produto.valorunitario = parseFloat(produto.valorunitario);
+        produto.valortotal = parseFloat(produto.volume * produto.valorunitario);
+
+        // produto.vencimento = parseFloat(produto.vencimento);
+        this.arrayProdutos.push(produto);
+        this.id++;
+
+  
+    }
+
+    atualizar(id, produto) {
+
+        for (let i = 0; i < this.arrayProdutos.length; i++) {
+            if (this.arrayProdutos[i].id == id ) {
+    
+                this.arrayProdutos[i].produto = produto.produto;
+                this.arrayProdutos[i].embalagem = produto.embalagem;
+                this.arrayProdutos[i].segmento = produto.segmento;
+                this.arrayProdutos[i].volume = produto.volume;
+                this.arrayProdutos[i].fornecedor = produto.fornecedor;
+                this.arrayProdutos[i].valorunitario = produto.valorunitario;
+                this.arrayProdutos[i].unidade = produto.unidade;
+                // this.arrayProdutos[i].valortotal = produto.valortotal;
+                this.arrayProdutos[i].vencimento = produto.vencimento;
+
+            }
+        }
+
+           
+
+    }
+    
+    lerDados() {
+
+        let produto = {};
+
+        produto.id = this.id;
+        produto.produto = document.getElementById('produto').value;
+        // produto.produto = retornaOption('produto');
+        produto.embalagem = document.getElementById('embalagem').value;
+        produto.segmento = document.getElementById('segmento').value;
+        produto.volume = document.getElementById('volume').value;
+        produto.fornecedor = document.getElementById('fornecedor').value;
+        produto.valorunitario = document.getElementById('valorunitario').value;
+        produto.unidade = document.getElementById('unidade').value;
+      
+        let volume = parseFloat(produto.volume);
+        let valorUnitario = parseFloat(produto.valorunitario);
+        let valorTotal = volume * valorUnitario;
+
+        produto.valortotal = valorTotal.toFixed(2);
+        produto.vencimento = document.getElementById('vencimento').value;
+        
+
+        //console.log(produto);
+
+        return produto; 
+        
+    }
+
+
+    validaCampos(produto) {
+        let msg ='';
+        if(produto.produto == ""){
+            msg += ' - selecione o nome do produto \n'
+        }
+        if(produto.embalagem == ""){
+            msg += '- selecione o tipo da embalagem \n'
+        }
+        if(produto.segmento == ""){
+            msg += ' - selecione o tipo do segmento \n'
+        }
+        if(produto.volume == ""){
+            msg += ' - digite a quantidade do produto \n'
+        }
+        if(produto.fornecedor == ""){
+            msg += ' - selecione o nome da fornecedor \n'
+        }
+        if(produto.valorunitario == ""){
+            msg += ' - digite o valor unitario do produto \n'
+        }
+        if(produto.unidade == ""){
+            msg += ' - selecione a unidade do produto (embalagem) \n'
+        }
+        if(produto.vencimento == ""){
+            msg += ' - selecione a data do vencimento da compra \n'
+        }
+        // if(produto.precokg == ""){
+        //     msg += 'informe o preço por kg commoditie \n'
+        // }
+        if (msg != '') {
+            alert(msg);
+            return false
+        }
+        return true;
+    }
+ 
+    // adicionar () {
+    //     this.arrayProdutos.push(produto);
+    //     console.log(this.arrayProdutos)
+    // }
+ 
+    // edit() {
+    //     alert('editttttt');
+
+    //     // let produto = this.lerDados();
+    //     // console.log(produto);
+    // } 
+        
+    
+    limpar() {
+        document.getElementById('produto').value = 'Produto';
+        document.getElementById('embalagem').value = 'Embalagem';
+        document.getElementById('segmento').value = 'Segmento';
+        document.getElementById('volume').value = '';
+        document.getElementById('fornecedor').value = 'Fornecedor';
+        document.getElementById('valorunitario').value = '';
+        document.getElementById('unidade').value = 'Unidade';
+        // document.getElementById('valortotal').value = '';
+        document.getElementById('vencimento').value = '';
+       
+
+        document.getElementById('btn1').innerText = 'Salvar';
+        this.editId = null;
+    }
+    deletar(id) {
+        
+        let tbody = document.getElementById('tbody');
+
+        for (let i = 0; i < this.arrayProdutos.length; i++) {
+            if ( this.arrayProdutos[i].id == id) {
+                this.arrayProdutos.splice(i, 1);
+                tbody.deleteRow(i);
+            }
+        }
+    }
+
+    preparaEdicao(dados) {
+        
+        this.editId = dados.id;
+        document.getElementById('produto').value = dados.produto;
+        document.getElementById('embalagem').value = dados.embalagem;
+        document.getElementById('segmento').value = dados.segmento;
+        document.getElementById('volume').value = dados.volume;
+        document.getElementById('fornecedor').value = dados.fornecedor;
+        document.getElementById('valorunitario').value = dados.valorunitario;
+        document.getElementById('unidade').value = dados.unidade;
+        // document.getElementById('valortotal').value = dados.valortotal;
+        document.getElementById('vencimento').value = dados.vencimento;
+
+        document.getElementById('btn1').innerText = 'Atualizar';
+        
     }
 }
-/* Event Listener */
-toggle.addEventListener("click", toggleMenu, false);
 
-// =========================================================================
-
-const items = document.querySelectorAll(".item");
-/* Activate Submenu */
-function toggleItem() {
-  if (this.classList.contains("submenu-active")) {
-    this.classList.remove("submenu-active");
-  } else if (menu.querySelector(".submenu-active")) {
-    menu.querySelector(".submenu-active").classList.remove("submenu-active");
-    this.classList.add("submenu-active");
-  } else {
-    this.classList.add("submenu-active");
-  }
-}
-/* Event Listeners */
-for (let item of items) {
-    if (item.querySelector(".submenu")) {
-      item.addEventListener("click", toggleItem, false);
-      item.addEventListener("keypress", toggleItem, false);
-    }   
-}
-/* Close Submenu From Anywhere */
-function closeSubmenu(e) {
-    if (menu.querySelector(".submenu-active")) {
-      let isClickInside = menu
-        .querySelector(".submenu-active")
-        .contains(e.target);
-      if (!isClickInside && menu.querySelector(".submenu-active")) {
-        menu.querySelector(".submenu-active").classList.remove("submenu-active");
-      }
-      
-  }}
-  /* Event listener */
-  document.addEventListener("click", closeSubmenu, false);
-
-  /*========================================================================*/
-
-   const subitems = document.querySelectorAll(".subitem");
-/*Activate Submenu */
- function toggleSubItem() {
-   if (this.classList.contains("subsubmenu-active")) {
-     this.classList.remove("subsubmenu-active");
-   } else if (submenu.querySelector(".subsubmenu-active")) {
-     submenu.querySelector(".subsubmenu-active").classList.remove("subsubmenu-active");
-     this.classList.add("subsubmenu-active");
-   } else {
-     this.classList.add("subsubmenu-active");
-   }
- }
-/* Event Listeners */
- for (let subitem of subitems) {
-     if (subitem.querySelector(".subsubmenu")) {
-       subitem.addEventListener("click", toggleSubItem, false);
-       subitem.addEventListener("keypress", toggleSubItem, false);
-     }   
- }
-
-   function closeSubsubmenu(e) {
-     if (submenu.querySelector(".subsubmenu-active")) {
-       let isClickInside = submenu
-   if (submenu.querySelector(".subsubmenu-active")) {
-    
-     if (!isClickInside && submenu.querySelector(".subsubmenu-active")) {
-       submenu.querySelector(".subsubmenu-active").classList.remove("subsubmenu-active");
- }}}}
-  // document.addEventListener("click", closeSubsubmenu, false);
-
-  //    const hasSubSubmenu = document.querySelectorAll('.has-subsubmenu');
-
-  //  hasSubSubmenu.forEach(submenu => {
-  //    submenu.addEventListener('click', () => {
-  //      submenu.classList.toggle('subsubmenu-active');
-  //    });
-  //   });
-
-  // $('.submenu li').click(function() {
-   
-  //   $(this).find('.subsubmenu').addClass('active');
-  // });
-  
-  // $('body').click(function(event) {
-    
-  //   if (!$(event.target).closest('.menu li').length) {
-  //     $('.subsubmenu').removeClass('active');
-  //   }
-  // });
-// ================================================================
+var produto = new Produto();
