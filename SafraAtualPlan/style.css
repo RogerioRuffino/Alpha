@@ -13,16 +13,16 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(66,92,125);
-  padding:10px;
-  font-size: 2rem;
+  padding:1px;
+  font-size: 1.5rem;
   align-items: center;
   margin-bottom: 3px;
-  padding-right: 15% ;
+  padding-right: 10% ;
   
 }
 .logo{
-  font-size: 20px;
-  width:120px;
+  font-size: 15px;
+  width:90px;
   text-decoration: none;
   list-style-type: none;
 } 
@@ -41,18 +41,16 @@ nav {
 
   background-color: #617cad;
   background-color: rgb(66,92,125);
-
-  align-self: center;
+  align-content: center;
 }
 
   .sel1{
     border-radius:5px;
     width: 20%;
-    /* height: 40px; */
-    padding:20px;
+    padding:0px;
     border:1px rgb(28, 22, 22) solid;
-    font-size: 16px;
-    padding: 8px;
+    font-size: 14px;
+    padding: 3px;
     background-color: #f2f2f2; /* cor de fundo personalizada */
   }
 
@@ -81,47 +79,35 @@ nav {
   .sel2 { 
     text-align:center;
     background-color:rgb(133,172,205);
-    font-size: 14px; 
     color: rgb(29, 29, 25); 
-    border: 1px solid #e3e5ed; 
-    /* border-radius: 5px; */
-    padding-top:10px;
-    padding-bottom:10px;
-    font-size: 20px;
-    width: 142px;
+    padding:12px 0;
+    font-size: 13px;
+    width: 103px;
     margin:0;
     appearance: none;
     text-align: center;
+    border:1px white solid ;
   }
   span{
-    padding-left: 40px;
+    padding-left: 3%;
   }
-  sel{
-    text-align: center;
-    background-color:white;
-    color:black;
-    padding-left:5px;
-    font-size: 20px;
-    width: 145px;
-  }
+ 
+
   /* input[type=number]::-webkit-input-placeholder {
   white-space: pre-wrap;
 } */
   .sel2[type='number'], .sel2[type='text'] {
-    width: 140px; 
-    /* width:fit-content; */
-    box-sizing: border-box; 
-    
+    width: 100px; 
+    list-style: none;
   }
   /* Define o estilo padrão para o campo de data */
 input[type="date"].sel2 {
-  color: #555;
-  font-size: 17px;
+  color: #111010;
+  font-size: 14px;
   font-family: sans-serif;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 10%;
+  margin-right: 3%;
   opacity: 1;
+  list-style: none;
 }
 
 /* Define o estilo do campo de data quando o mouse está sobre ele */
@@ -129,25 +115,23 @@ input[type="date"].sel2:hover {
   color: #000;
   font-size: 14px;
   font-family: sans-serif;
-  border: 1px solid #000;
-  border-radius: 5px;
-  margin-right: 10%;
+  margin-right: 1%;
 }
 
 
   button {
     
-    height: 15%;
-    width:5%;
+    height: 10%;
+    width:8%;
     text-align: center;
     background-color:#FFCA00 ;
     color: rgb(1, 1, 1);
-    padding: 8px 8px;
+    padding:5px;
     border: none;
     border-radius: 5px;
     box-shadow: 3px 5px rgb(56,149,63);
     transition-duration: 0.3s;
-    margin-right: 3%;
+    margin-right: 1px;
     font-size:14px;
   }
   
@@ -164,56 +148,45 @@ input[type="date"].sel2:hover {
 background-color: rgb(239, 242, 242);
 } 
 
-.center {
-display:flex;
-justify-content:space-around;
-}
-
   .icon {
-  display:inline-flex;
-  background-color:rgb(216, 216, 216);
-  min-width: 10px;
-  max-width: 25px;
-  color:rgb(45, 10, 10);
+
+    display:inline-flex;
+    justify-content:space-around;
+    padding:5px;
+    font-size: 14px; 
   }
 
 
-
-/* .button_icons button:nth-child(3):hover{
-  color:blue;
-} */
 /*====================== Fim Buttons Icons========================== */
 /* ______________________Fim Tabela de Insercao Data______________ */
 
 .line{
-border-bottom:5px rgb(244, 242, 242) solid;
+border-bottom:0px rgb(244, 242, 242) solid;
 margin:0px 0px;
 
 }
 
 /* __________________ Inicio tabela de Dados Inseridos com Span_____ */
 .table{
-margin-top:20px;
+
 display:flex;
-/* grid-template-columns: minmax(55%,80%)80% ; */
 width: 10%;
-/* text-align:left;   */
 }
 
 th {
 background-color: black;
 color: rgb(244, 243, 242);
-padding-left:5px;
-font-size: 20px;
-width: 130px;
+padding:5px;
+font-size: 14px;
+width: 100px;
 }
 td{
 text-align: center;
 background-color:white;
 color:black;
-padding-left:5px;
-font-size: 20px;
-width: 140px;
+padding:5px;
+font-size: 14px;
+width: 100px;
 }
 /* ========================================================================== */
 /* -------------------Display responsiove celular--------------------------- */
