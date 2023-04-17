@@ -13,23 +13,6 @@ callCadastrarProdutor.addEventListener('click', () => {
 });
 
 
- function calcularValorTotal() {
-     let volumeInput = document.getElementById("volume");
-     let valorUnitarioInput = document.getElementById("valorunitario");
-     let valorTotalInput = document.getElementById("valortotal");
-  
-     let volume = parseFloat(volumeInput.value);
-     let valorUnitario = parseFloat(valorUnitarioInput.value);
-  
-     let valorTotal = volume * valorUnitario;
-  
-     valorTotalInput.value = valorTotal.toFixed(2);
-     return valorTotalInput.value;
-   }
-  
-  // Adicionar um ouvinte de evento "input" para cada campo de entrada
-//   document.getElementById("volume").addEventListener("input", calcularValorTotal);
-//   document.getElementById("valorunitario").addEventListener("input", calcularValorTotal);
   
 
 
@@ -97,7 +80,7 @@ class Produto {
                 td_produto.innerText = this.arrayProdutos[i].produto;
                 td_embalagem.innerText = this.arrayProdutos[i].embalagem;
                 td_segmento.innerText = this.arrayProdutos[i].segmento;
-                td_volume.innerText = this.arrayProdutos[i].volume.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                td_volume.innerText = this.arrayProdutos[i].volume.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 td_fornecedor.innerText = this.arrayProdutos[i].fornecedor;
                 td_valorunitario.innerText = this.arrayProdutos[i].valorunitario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
                 td_unidade.innerText = this.arrayProdutos[i].unidade;
@@ -110,33 +93,18 @@ class Produto {
                 const ano = data.getFullYear();
                 const dataFormatada = `${dia}-${mes}-${ano}`;
                 td_vencimento.innerText = dataFormatada;    
-              
-                // td_vencimento.innerText = this.arrayProdutos[i].vencimento;
-               
-                
-                // td_acoes.innerText = this.arrayProdutos[i].acoes;
-                // this.arrayProdutos[i].acoes;
-                // console.log(this.arrayProdutos);
+        
+{/* <i class="fa-solid fa-pen-to-square"></i> */}
+                let iconEdit = document.createElement('i');
+                iconEdit.classList.add('fas', 'fa-pen-to-square', 'icon');
+                iconEdit.setAttribute("onclick", "produto.preparaEdicao(" + JSON.stringify(this.arrayProdutos[i]) + ")");
 
-                td_id.classList.add('center');
-                td_acoes.classList.add('center');
+                let iconDelete = document.createElement('i');
+                iconDelete.classList.add('fas', 'fa-trash', 'icon');
+                iconDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
 
-                let imgEdit = document.createElement('img');
-                imgEdit.src = '/Alpha/Img/edit.png';
-                imgEdit.classList.add('icon');
-                imgEdit.setAttribute("onclick", "produto.preparaEdicao(" + JSON.stringify(this.arrayProdutos[i]) + ")");
-
-                // let imgEdit = document.createElement('img');
-                // imgEdit.src ='/Alpha/Img/edit.png';
-                // imgEdit.setAttribute("onclick", "produto.preparaEdicao("+ JSON.stringify(this.arrayProdutos[i]) +")");
-
-                let imgDelete = document.createElement('img');
-                imgDelete.src ='/Alpha/Img/delete.png';
-                imgDelete.classList.add('icon');
-                imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
-
-                td_acoes.appendChild(imgEdit);
-                td_acoes.appendChild(imgDelete);
+                td_acoes.appendChild(iconEdit);
+                td_acoes.appendChild(iconDelete);
               
             }
         }
@@ -155,6 +123,7 @@ class Produto {
         this.arrayProdutos.push(produto);
         this.id++;
 
+  
     }
 
     atualizar(id, produto) {
