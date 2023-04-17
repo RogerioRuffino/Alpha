@@ -1,149 +1,147 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/291aa0a235.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>document</title>
-</head>
-<body>
-    <nav>
-        <img class="logo" src="/Img/alphalogo.jpg" alt="Reference image"></li>
-
-      	<select class="sel1" id="clientes">
-          <option value="">Selecione um cliente</option>
-        </select>
-
-        <select class="sel1" id="safra">
-        <!-- <option disabled selected>Selecione uma Safra</option> -->
-        <option value="22/23">Safra 22/23</option>
-        <option value="19/20">Safra 21/22</option>
-        <option value="20/21">Safra 20/21</option>
-        <option value="21/22">Safra 19/20</option>
-        <option value="23/24">Safra 23/24</option>
-        <option value="25/26">Safra 25/26</option>
-        <option value="26/27">Safra 26/27</option>
-        </select>
-
-        <button type="button" id="btn_adicionar_cliente">+ Cliente</button>
-        <button id="btnVoltar" onclick="voltaParaPaginaPrincipal()">Voltar</button>
-
-        
-	</nav>
-<!-- ======================================================== -->
-<main>
-  <div class="card">
-        <div class="line1">
-        <select class="sel2" id="produto" >
-					<option disabled selected>Produto</option>
-					<option value="produto1">Produto 1</option>
-					<option value="produto2">Produto 2</option>
-					<option value="produto3">Produto 3</option>
-				</select>
-
-        <select class="sel2" id="embalagem">
-          <option disabled selected>Embalagem</option>
-          <option value="embalagem1">Embalagem 1</option>
-          <option value="embalagem2">Embalagem 2</option>
-          <option value="embalagem3">Embalagem 3</option>
-        </select>
-
-        <select class="sel2" id="segmento">
-          <option disabled selected>Segmento</option>
-          <option value="segmento1">Segmento 1</option>
-          <option value="segmento2">Segmento 2</option>
-          <option value="segmento3">Segmento 3</option>
-        </select>
-
-        <input class="sel2"  type="number" id="volume" placeholder="Volume">
-
-        <select class="sel2" id="fornecedor">
-          <option disabled selected>Fornecedor</option>
-          <option value="fornecedor1">Fornecedor 1</option>
-          <option value="fornecedor2">Fornecedor 2</option>
-          <option value="fornecedor3">Fornecedor 3</option>
-        </select>
-
-        <input class="sel2" type="number" id="valorunitario" placeholder="Valor Unitário">
-
-        <select class="sel2" id="unidade">
-          <option disabled selected>Unidade</option>
-          <option value="unidade1">Unidade 1</option>
-          <option value="unidade2">Unidade 2</option>
-          <option value="unidade3">Unidade 3</option>
-        </select>
-
-        <!-- <input class="sel2" type="number" id="valortotal" placeholder="Valor Total"> -->
-		<!-- <input class="sel2" type="date" id="vencimento" > -->
-        <!-- Campo de entrada de texto -->
-        <input class="sel2" type="text" id="data-text" name="data" value="Vencimento" onclick="mostrarCampoData()">
-        <!-- Campo de entrada de data -->
-		<input class="sel2" type="date" id="vencimento" name="data" style="display:none;"  onclick="(function() { this.type = 'date'; this.focus(); })()">
-
-        <!-- <input class="sel2" type="date" id="vencimento" name="data" style="display:none;" onclick="(function() { this.type = 'date'; this.focus(); })()"> -->
-            
-        <span>        </span>
-        <button type="button" onclick="produto.salvar()" id="btn1">Salvar</button>
-        <span></span>
-        <button type="button" onclick="produto.limpar()">Limpar</button>
 
 
-    </div>
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/291aa0a235.js" crossorigin="anonymous"></script>
 
-   
+    <title>Document</title>
+    <!-- <title>screenCommodities</title> -->
     
-  </div>
-<br>
-  <!-- _________________________________ -->
-  <div class="line">
-  </div>
-  <!-- _________________________________ -->
+</head>
+ <body>
+    <nav>
+        <ul class="menu">
+          
+          <li class="logo"><a href="#"><img src="Img/alphalogo.jpg" alt="Reference image"></a></li>
+          <li class="item"><a href="#">Home</a></li>
+          
+          <!-- ==================================== -->
+          
+           <li class="item has-submenu">
+            <a tabindex="0">Início</a>
+            <ul class="submenu">
+              <li class="subitem" id="ptax"><a href="#">Cotação da Ptax</a></li>
+              <li class="subitem" id="dolar"><a href="#">Cotação do dólar</a></li>
+              <li class="subitem"><a href="#">Próximos vencimentos</a></li>
+              <li class="subitem"><a href="#">Gráficos</a></li>
+            </ul>
+          </li> 
+          
+          <!-- ======================================== -->
+
+          <li class="item has-submenu">
+          <a tabindex="0">Cadastro</a>
+          <ul class="submenu">
+              <li class="subitem"><a href="#">Fornecedores</a></li>
+              <li class="subitem"id="produtores"><a href="#">Produtores</a></li> 
+              
+              <li class="subitem has-subsubmenu" >
+                <a tabindex="0">Insumos</a>
+                  <ul class="subsubmenu" >
+                    <li class="subsubitem"><a href="#">Fertilizantes</a></li>
+                    <li class="subsubitem"><a href="#">Sementes</a></li>
+                    <li class="subsubitem"><a href="#">Defensivos</a></li>
+                    <li class="subsubitem"><a href="#">Outros</a></li> 
+                  </ul>
+              </li>
+
+              <li class="subitem has-subsubmenu">
+                <a tabindex="0">Clientes</a>               
+                  <ul class="subsubmenu" >
+                    <li class="subsubitem"><a href="#">Cliente 1</a></li>
+                    <li class="subsubitem"><a href="#">Cliente 2</a></li>
+                    <li class="subsubitem"><a href="#">Cliente 3</a></li>
+                    <li class="subsubitem"><a href="#">Cliente n</a></li>
+                  </ul>
+              </li>
+              </ul></li>  
+         
+              <!-- ================================= -->
+            
+             <li class="item has-submenu">
+              <a tabindex="0">Negociação</a>
+              <ul class="submenu">
+                  <li class="subitem" id="safraAtual"><a href="#">Safra 22/23</a></li>
+                  <li class="subitem"><a href="#">Safra 21/22</a></li>
+                  <li class="subitem"><a href="#">Safra 20/21</a></li>
+                  <li class="subitem"><a href="#">Safra 19/20</a></li>
+                  <li class="subitem"><a href="#">Histórico</a></li>
+              </ul>
+            </li>
+             <!-- ================================= -->
+
+             <li class="item has-submenu">
+             <a tabindex="0">Financeiro</a>
+             <ul class="submenu">
+            
+            
+                  <!-- <li class="subitem"><a>Alpha</a> -->
+                     
+                        
+                        <li class="subitem has-subsubmenu" >
+                          <a tabindex="0">Contas a Pagar</a>
+                        
+                            <ul class="subsubmenu"  >
+                            <li class="subsubitem"><a href="#">2019<li class="subsubitem"><a href="#">2020</a></li>
+                            <li class="subsubitem"><a href="#">2021</a></li>
+                            <li class="subsubitem"><a href="#">2022</a></li>
+                            <li class="subsubitem"><a href="#">2023</a></li>
+                            </ul>
+                      </li>
+                      
+                      <li class="subsubitem has-subsubmenu" >
+                        <a tabindex="0">Contas a Receber</a>
+                        <ul class="subsubmenu" >
+                          <li class="subsubitem"><a href="#">2019<li class="subsubitem"><a href="#">2020</a></li>
+                          <li class="subsubitem"><a href="#">2021</a></li>
+                          <li class="subitem"><a href="#">2022</a></li>
+                          <li class="subitem"><a href="#">2023</a></li>
+                        </ul>
+                      </li> 
+                      
+
+                      <li class="subsubitem has-subsubmenu" >
+                        <a tabindex="0">Produtores</a>
+                        <ul class="subsubmenu" >
+                          <li class="subsubitem"><a href="#">001<li class="subsubitem"><a href="#">002</a></li>
+                          <li class="subsubitem"><a href="#">003</a></li>
+                          <li class="subsubitem"><a href="#">004</a></li>
+                          <li class="subsubitem"><a href="#">00n</a></li>
+                        </ul>
+                      </li> 
+<!-- 
+                      <li class="subsubitem has-subsubmenu">
+                        <a tabindex="0" >Pedidos</a>
+                        <ul class="subsubmenu">
+                            <li><a href="#">Cliente 1</a></li>
+                            <li><a href="#">Cliente 2</a></li>
+                            <li><a href="#">Cliente 3</a></li>
+                            <li><a href="#">Cliente n</a></li>
+                        </ul></li> -->
+                      
+                    
+                </ul></li> 
 
 
-  <div class="content">
-    <table>
-      <thead>
-        <th>ID</th>
-        <th>Produto</th>
-        <th>Embalagem</th>
-        <th>Segmento</th>
-        <th>Volume</th>
-        <th>Fornecedor</th>
-        <th>Valor Unitário</th>
-        <th>Unidade</th>
-        <th>Valor Total</th>
-        <th>Vencimento</th>
-        <th>Ações</th>
-      </thead>
-      <tbody id="tbody">
-        <tr>
-          <td>1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-           <td class="icon" >
-            <!-- <i class="fa-solid fa-pen-to-square"></i> -->
-            <i onclick="produto.salvar()" class="fa-solid fa-pen-to-square"></i>
-            <i onclick="produto.limpar()" class="fa-sharp fa-solid fa-trash"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</main>
-
+<!-- ---------------------------------------------------- -->
+          
   
-<script src="script.js"></script>
+          <li class="item" id="contato"><a href="#">Contato</a></li>
+          <li class="item button" id="login"><a href="#">Log In</a></li>
+          <li class="item button secondary" id="signup"><a href="#">Cadastrar</a></li>
+          <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+      </nav>   
+<!-- ================================================================================================== -->
+
+
+<script src="script.js"></script> 
     
 </body>
 </html>
