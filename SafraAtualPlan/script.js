@@ -57,10 +57,11 @@ class Produto {
             let tbody = document.getElementById('tbody');
             tbody.innerText = '';
 
+            let valorTotalGeral = 0;
+            
+
             for(let i = 0; i < this.arrayProdutos.length; i++ ) {
-                console.log(this.arrayProdutos[i]);
                 let tr = tbody.insertRow();
-                // console.log(this.arrayProdutos);
 
                 let td_id = tr.insertCell();
                 let td_produto = tr.insertCell();
@@ -87,6 +88,8 @@ class Produto {
               
                 td_valortotal.innerText = this.arrayProdutos[i].valortotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+        valorTotalGeral += this.arrayProdutos[i].valortotal;
+
                 const data = new Date(this.arrayProdutos[i].vencimento);
                 const dia = String(data.getDate()).padStart(2, '0');
                 const mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -107,6 +110,33 @@ class Produto {
                 td_acoes.appendChild(iconDelete);
               
             }
+            // criando uma nova linha para o valor total geral
+    let tr = tbody.insertRow();
+    
+
+      // criando a célula com o texto "valorTotalGeral"
+      let td_total = tr.insertCell();
+      td_total.innerText = "Valor Total Geral";
+
+    // criando as células vazias antes do valor total geral
+    let td_empty1 = tr.insertCell();
+    td_empty1.colSpan = 7;
+
+    // criando a célula com o valor total geral
+    let td_total_value = tr.insertCell();
+    td_total_value.innerText = valorTotalGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    // criando as células vazias depois do valor total geral
+    let td_empty2 = tr.insertCell();
+    td_empty2.colSpan = 1;
+    // <i class="fa-regular fa-download"></i>
+    let td_icon = tr.insertCell();
+    td_icon.innerHTML = '<i class="fa-solid fa-download"></i>';
+    // adicionando classe CSS à última linha
+    tr.classList.add('total-row');
+    
+
+           
         }
 
     adicionar(produto) {
