@@ -1,4 +1,3 @@
-/* Basic styling */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -9,272 +8,277 @@ body {
   font-size: 16px;
 }
 nav {
-  background: #222;
-  padding: 0 15px;
-  background-color: rgb(66,92,125);
-  align-content: center;
-  font-family: sans-serif;
-  font-size: 14px;
-  align-self: center;
-}
-a {
-  color: white;
-  text-decoration: none;
-}
-.menu,
-.submenu, .subsubmenu {   
-  list-style-type: none;
-}
-.logo img{
-  font-size: 20px;
-  /* padding: 7.5px 10px 7.5px 0; */
-  width:100px;
-}
-
-.item {
-  padding: 10px;
-  
-}
-   /* .subitem{
-    padding: 1px;
-    
-  } */
-
-.item.button {
-  padding: 9px 5px;
-}
-.item:not(.button) a:hover,
-.item a:hover::after {
-  color: #ccc;
-}
-
-/* =============================================== */
-                    /* Mobile menu */
-/* ================================================== */
-.menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-}
-.menu li a {
-  display: block;
-  padding: 15px 5px;
-}
-.menu li.subitem a {
-  padding: 15px;
-}
-.toggle {
-  order: 1;
-  font-size: 20px;
-}
-.item.button {
-  order: 2;
-}
-.item {
-  order: 3;
-  width: 100%;
-  text-align: center;
-  display: block;
-}
-.active .item {
-  display: block;
- }
-                 .active .subitem {
-                    display: block;
-                  }
-                                
-
-.button.secondary { /* divider between buttons and menu links */
-  border-bottom: 1px #e1d1d1 solid;
-}
-
-/* Submenu up from mobile screens */
-.submenu {
-  display: none;
-  /* position:relative; */
-}
-
-.submenu-active .submenu {
-  display: block;
- }
-
- .has-submenu i {
-  font-size: 12px;
-}
-
-.has-submenu > a::after {
-  font-family: "Font Awesome 5 Free";
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 900; 
-  content: "\f078";
-  color: white;
-  padding-left: 5px;
-}
-
-.subitem a {
-  padding: 10px 15px;
-}
-.submenu-active {
-  background-color: rgb(6,92,125);
-  border-radius: 3px;
-  /* width: fit-content; */
-}
- 
-.menu li:hover > .subsubmenu {
-  
-  background-color: rgb(75, 113, 163);
-  transition-duration: 50s;
-  transition-delay: 29s;
-  display: block;
-
-}
- .subsubmenu {
-  top: 0;
   background-color: rgb(66,92,125);
-
+  padding:1px;
+  font-size: 1.5rem;
+  align-items: center;
+  margin-bottom: 3px;
+  padding-right: 10% ;
+  
+}
+.logo{
+  font-size: 15px;
+  width:90px;
+  text-decoration: none;
+  list-style-type: none;
 } 
 
-        .subsubmenu {
-        display: none;
+.line1 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  justify-content: space-around;
+  justify-content: flex-start;
+  width:100%;
+  align-items: center;
+  
+}
+.card{
+
+  background-color: #617cad;
+  background-color: rgb(66,92,125);
+  align-content: center;
+}
+
+  .sel1{
+    border-radius:5px;
+    width: 20%;
+    padding:0px;
+    border:1px rgb(28, 22, 22) solid;
+    font-size: 14px;
+    padding: 3px;
+    background-color: #f2f2f2; /* cor de fundo personalizada */
+  }
+
+
+::-webkit-input-placeholder { /* Safari, Chrome, Opera */
+    opacity: 1;
+}
+:-moz-placeholder { /* Firefox 18- */
+   opacity: 1;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   opacity: 1;
+}
+:-ms-input-placeholder { /* IE 10+ */
+   opacity: 1;
+}
+::placeholder { /* Modern browsers */
+   opacity: 1;
+}
+
+::placeholder {
+   color: black
+}
+
+
+  .sel2 { 
+    text-align:center;
+    background-color:rgb(133,172,205);
+    color: rgb(29, 29, 25); 
+    padding:12px 0;
+    font-size: 13px;
+    width: 103px;
+    margin:0;
+    appearance: none;
+    text-align: center;
+    border:1px white solid ;
+  }
+  span{
+    padding-left: 3%;
+  }
+ 
+
+  /* input[type=number]::-webkit-input-placeholder {
+  white-space: pre-wrap;
+} */
+  .sel2[type='number'], .sel2[type='text'] {
+    width: 100px; 
+    list-style: none;
+  }
+  /* Define o estilo padrão para o campo de data */
+input[type="date"].sel2 {
+  color: #111010;
+  font-size: 14px;
+  font-family: sans-serif;
+  margin-right: 3%;
+  opacity: 1;
+  list-style: none;
+}
+
+/* Define o estilo do campo de data quando o mouse está sobre ele */
+input[type="date"].sel2:hover {
+  color: #000;
+  font-size: 14px;
+  font-family: sans-serif;
+  margin-right: 1%;
+}
+
+
+  button {
     
-        }
-        
-
-      /* .subsubmenu-active .subsubmenu {
-      display: block;
-      } */
-      .has-subsubmenu i {
-        font-size: 12px;
-      }
-      .has-subsubmenu > a::after {
-        font-family: "Font Awesome 5 Free";
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 900; 
-        content: "\f078";
-        color: rgb(58, 167, 114);
-        padding-left: 5px;
-      
-      }
-      /*.subsubitem a {
-        padding: 10px 15px;
-      }
-      .subsubmenu-active {
-        background-color: #9b9090;
-        border-radius: 3px;
-      } */
-/* Tablet menu */
-  @media all and (min-width: 882px) {
-  .menu {
-      justify-content: center;
-  }
-  .logo {
-      flex: 1;
-  }
-
-
-  .item.button {
-      width: auto;
-      order: 1;
-      display: block;
-  }
-  .toggle {
-      flex: 1;
-      text-align: right;
-      order: 2;
-  }
-  /* Button up from tablet screen */
-  .menu li.button a {
-      padding: 10px 15px;
-      margin: 5px 0;
+    height: 10%;
+    width:8%;
+    text-align: center;
+    background-color:#FFCA00 ;
+    color: rgb(1, 1, 1);
+    padding:5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 5px rgb(56,149,63);
+    transition-duration: 0.3s;
+    margin-right: 1px;
+    font-size:14px;
   }
   
-  .button a {
-    background: #0080ff;
-    border: 1px rgb(66,92,125) solid;
-    
+  button:hover {
+    background-color: #dee8cd;
+  }
+  button:active {
+    box-shadow: none;
+    transform: translateY(10px);
+  }
+/* ======inicio tabela roger=================== */
+
+.content{
+background-color: rgb(239, 242, 242);
+} 
+
+  .icon {
+
+    display:inline-flex;
+    justify-content:space-around;
+    padding:5px;
+    font-size: 14px; 
+  }
+
+
+/*====================== Fim Buttons Icons========================== */
+/* ______________________Fim Tabela de Insercao Data______________ */
+
+.line{
+border-bottom:0px rgb(244, 242, 242) solid;
+margin:0px 0px;
+
+}
+
+/* __________________ Inicio tabela de Dados Inseridos com Span_____ */
+.table{
+
+display:flex;
+width: 10%;
+}
+
+th {
+background-color: black;
+color: rgb(244, 243, 242);
+padding:5px;
+font-size: 14px;
+width: 100px;
+}
+td{
+text-align: center;
+background-color:white;
+color:black;
+padding:5px;
+font-size: 14px;
+width: 100px;
+}
+/* ========================================================================== */
+/* -------------------Display responsiove celular--------------------------- */
+/* ========================================================================== */
+/* @media screen and (max-width: 300px) {
  
+  .title {
+      font-family:'sans-serif';
+      font-size:12px; 
+      color:darkorange;
+      text-shadow: 0.2px  1px black;
+      padding-left:10px;
+      background-color: rgb(27, 32, 27);
+      max-width: 100%;
+      border: 2px solid darkorange;
+      border-radius:3px;
+  }
+
+  .card {
+    display:inline-grid;
+    grid-template-columns: minmax(200px,300px);
+    width: 80%;
+    margin-bottom:5px;
+
+  }
+  .lineInput{
+    background:rgb(6, 63, 62);
+    border:1px solid; 
+    padding: center;padding-left:10px;
+    margin-bottom: 5px;   
+    
+  }
+  
+  label{
+    
+    color: orange;
+    font-size: 18px;
+    text-shadow: 0.2px  1px white;
+    display:grid
+    
+  }
+  
+  .lineInput input, .lineInput select{
+    outline-color: white;
+    text-align:left;
+    height: 30px;
+    margin-bottom:5px;
+    font-size: medium;
+    border:1px solid lightgrey; 
+    width: 100% ;
+    color:black;
+    align-content: center;
+  }
+
+
+  .table{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: minmax(50px,1000px) ;
+    text-align:left;
+    padding-right:1px;  
+  }
+  
+  th {
+    background-color: black;
+    color: orange;
+    padding-left:1px;
+    
+    font-size: 12px;
+    max-width: 100%;
+    min-width:10px
+  
+  }
+  td{
+    text-align: left;
+    background-color:rgb(216, 216, 216);
+    color:black;
+    padding-left:0px;
+    
+    font-size: 14px;
+  }
+  img{
+    display:inline-flex;
+    background-color:rgb(216, 216, 216);
+    min-width: 15px;
+    max-width: 20px;
+    color:rgb(45, 10, 10);
+  }
 }
-.button.secondary {
-  border: 0 ;
 
-}
+ */
 
-  .button.secondary a{
-    background: transparent;
-    border-bottom: 1px #e1d1d1 solid;
-  }
-  .button.secondary a {
-
-      background: transparent;
-      border: 1px #0080ff solid;  
-      
-  }
-   .button a:hover {
-      text-decoration: none;
-  }
-  .button:not(.secondary) a:hover {
-      background: rgb(57, 39, 54);
-      border-color: darkblue;
-  }
-
-            .submenu{
-              position:relative
-            }
-
-            .subsubmenu li:hover > .subsubmenu {
-    display:none;
-    transition-duration: 50s;
-  transition-delay: 29s;
-
-              display: block;
-
-              width: min-content;
-              align-content: space-between;  
-            } 
-          
-            .subsubmenu {
-              display: none; 
-              position: center; 
-              top: 0;
-              background-color: rgb(66,92,125);
-            
-            }  
-}  
-
- /*Desktop menu */
- @media all and (min-width: 960px) {
-  .menu {
-      align-items: flex-start;     
-      flex-wrap: nowrap;
-      background: none;
-  }
-  .logo {
-      order: 0;
-  }
-  .item {
-      order: 1;
-      position: relative;
-      display: block; 
-      width: auto;
-  }
-  .button {
-      order: 2;
-  }
-  .submenu-active .submenu {
-      display: block;
-      position: absolute;
-      
-      top: 96px;
-      background: #111;
-      background-color: rgb(6,92,125); 
-  }
-  .toggle {
-      display: none;
-  }
-  .submenu-active {
-      border-radius: 0;
-  }
-}  
+/* ---------------------- layout table em HTM------------------------------------------- */
+/* ==================================================================================== */
