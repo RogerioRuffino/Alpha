@@ -157,7 +157,8 @@ background-color: rgb(239, 242, 242);
   }
 
   .total-row td {
-    background-color:  rgb(148, 183, 230);
+    background-color: rgb(148, 183, 230);
+}
 
 
 
@@ -182,7 +183,7 @@ background-color: black;
 color: rgb(244, 243, 242);
 padding:5px;
 font-size: 14px;
-width: 120px;
+width: 100px;
 }
 td{
 text-align: center;
@@ -190,7 +191,7 @@ background-color:white;
 color:black;
 padding:5px;
 font-size: 14px;
-width: 120px;
+width: 100px;
 }
 /* ========================================================================== */
 /* -------------------Display responsiove celular--------------------------- */
