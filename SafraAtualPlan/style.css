@@ -146,6 +146,7 @@ input[type="date"].sel2:hover {
 
 .content{
 background-color: rgb(239, 242, 242);
+display:none;
 } 
 
   .icon {
@@ -155,7 +156,10 @@ background-color: rgb(239, 242, 242);
     padding:5px;
     font-size: 14px; 
   }
-
+  .icon:hover,.icon2:hover {
+    color: #34b972;
+    cursor: pointer;
+}
   .total-row td {
     background-color: rgb(148, 183, 230);
 }

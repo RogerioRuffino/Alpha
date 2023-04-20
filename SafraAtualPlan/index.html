@@ -10,14 +10,14 @@
 </head>
 <body>
     <nav>
-        <img class="logo" src="../Img/alphalogo.jpg" alt="Reference image"></li>
+        <img class="logo" src="/Img/alphalogo.jpg" alt="Reference image"></li>
 
-      	<select class="sel1" id="clientes">
-          <option value="">Selecione um cliente</option>
+      	<select class="sel1" id="clientes" onclick="carregarProdutos('clientes', 'clientes.json')">
+          <option value="" disabled selected>Clientes</option>
         </select>
 
         <select class="sel1" id="safra">
-        <!-- <option disabled selected>Selecione uma Safra</option> -->
+          <option value="" disabled selected>Safras</option>
         <option value="22/23">Safra 22/23</option>
         <option value="19/20">Safra 21/22</option>
         <option value="20/21">Safra 20/21</option>
@@ -36,43 +36,33 @@
 <main>
   <div class="card">
         <div class="line1">
-        <select class="sel2" id="produto" >
-					<option disabled selected>Produto</option>
-					<option value="produto1">Produto 1</option>
-					<option value="produto2">Produto 2</option>
-					<option value="produto3">Produto 3</option>
+        <select class="sel2" id="produto"  onclick="carregarProdutos('produto', 'listproducts.json')">
+          <option value="" disabled selected>Produtos</option>
 				</select>
 
-        <select class="sel2" id="embalagem">
+        <select class="sel2" id="embalagem" onclick="carregarProdutos('embalagem', 'embalagem.json')">
           <option disabled selected>Embalagem</option>
-          <option value="embalagem1">Embalagem 1</option>
-          <option value="embalagem2">Embalagem 2</option>
-          <option value="embalagem3">Embalagem 3</option>
+         
         </select>
 
-        <select class="sel2" id="segmento">
+        <select class="sel2" id="segmento" onclick="carregarProdutos('segmento', 'segmento.json')">
           <option disabled selected>Segmento</option>
-          <option value="segmento1">Segmento 1</option>
-          <option value="segmento2">Segmento 2</option>
-          <option value="segmento3">Segmento 3</option>
+        
         </select>
 
         <input class="sel2"  type="number" id="volume" placeholder="Volume">
 
-        <select class="sel2" id="fornecedor">
+        <select class="sel2" id="fornecedor" onclick="carregarProdutos('fornecedor', 'fornecedor.json')">
           <option disabled selected>Fornecedor</option>
-          <option value="fornecedor1">Fornecedor 1</option>
-          <option value="fornecedor2">Fornecedor 2</option>
-          <option value="fornecedor3">Fornecedor 3</option>
+         
         </select>
 
         <input class="sel2" type="number" id="valorunitario" placeholder="Valor Unitário">
 
         <select class="sel2" id="unidade">
           <option disabled selected>Unidade</option>
-          <option value="unidade1">Unidade 1</option>
-          <option value="unidade2">Unidade 2</option>
-          <option value="unidade3">Unidade 3</option>
+          <option value="Kg">Kg</option>
+          <option value="Lt">Lt</option>
         </select>
 
         <!-- <input class="sel2" type="number" id="valortotal" placeholder="Valor Total"> -->
@@ -87,7 +77,7 @@
         <span>        </span>
         <button type="button" onclick="produto.salvar()" id="btn1">Salvar</button>
         <span></span>
-        <button type="button" onclick="produto.limpar()">Limpar</button>
+        <button type="button" onclick="produto.limparTudo()">Limpar</button>
 
 
     </div>

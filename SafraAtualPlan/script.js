@@ -12,15 +12,69 @@ callCadastrarProdutor.addEventListener('click', () => {
   window.location.href = '/Alpha/CadastrarProdutor/index.html';
 });
 
+// selecionando os elementos HTML
+const clientesSelect = document.querySelector('#clientes');
+const safraSelect = document.querySelector('#safra');
+// const btnAdicionarCliente = document.querySelector('#btn_adicionar_cliente');
+const contentDiv = document.querySelector('.content');
 
+clientesSelect.addEventListener('change', () => {
+    contentDiv.style.display = 'block';
+});
+
+safraSelect.addEventListener('change', () => {
+    contentDiv.style.display = 'block';
+});
+
+
+
+
+function carregarProdutos(idSelect, nomeArquivo) {
+    fetch(nomeArquivo)
+      .then(response => response.json())
+      .then(items => {
+        // Ordena os produtos em ordem alfabética
+        items.sort();
   
-
-
+        // Adiciona a primeira opção
+        const selectProducts = document.getElementById(idSelect);
+        // const primeiraOpcao = document.createElement('option');
+        // primeiraOpcao.disabled = true;
+        // primeiraOpcao.selected = true;
+        // primeiraOpcao.textContent = 'Escolha produto';
+        // selectProducts.appendChild(primeiraOpcao);
+  
+        // Adiciona cada produto como uma option no select
+        items.forEach(item => {
+          const option = document.createElement('option');
+          option.value = item;
+          option.text = item;
+          selectProducts.add(option);
+        });
+  
+        // Adiciona um listener de teclado para facilitar a seleção do produto
+        selectProducts.addEventListener('keypress', e => {
+          const primeiraLetra = e.key.toLowerCase();
+          const optionSelecionada = [...selectProducts.options].find(option => option.value.toLowerCase().startsWith(primeiraLetra));
+          if (optionSelecionada) {
+            optionSelecionada.selected = true;
+          }
+        });
+      });
+  }
+  
 function mostrarCampoData() {
     
     document.getElementById("data-text").style.display = "none";
   
     document.getElementById("vencimento").style.display = "block";
+  }
+
+  function mostrarCampoText() {
+    
+    document.getElementById("data-text").style.display = "block";
+  
+    document.getElementById("vencimento").style.display = "none";
   }
 
 class Produto {
@@ -44,7 +98,7 @@ class Produto {
                 this.atualizar(this.editId, produto);
             }
 
-                 
+         
         }
         //  console.log(produto);
         // console.log(this.arrayProdutos);
@@ -58,6 +112,7 @@ class Produto {
             tbody.innerText = '';
 
             let valorTotalGeral = 0;
+            
             
 
             for(let i = 0; i < this.arrayProdutos.length; i++ ) {
@@ -97,7 +152,6 @@ class Produto {
                 const dataFormatada = `${dia}-${mes}-${ano}`;
                 td_vencimento.innerText = dataFormatada;    
         
-{/* <i class="fa-solid fa-pen-to-square"></i> */}
                 let iconEdit = document.createElement('i');
                 iconEdit.classList.add('fas', 'fa-pen-to-square', 'icon');
                 iconEdit.setAttribute("onclick", "produto.preparaEdicao(" + JSON.stringify(this.arrayProdutos[i]) + ")");
@@ -115,8 +169,8 @@ class Produto {
     
 
       // criando a célula com o texto "valorTotalGeral"
-      let td_total = tr.insertCell();
-      td_total.innerText = "Valor Total Geral";
+    let td_total = tr.insertCell();
+    td_total.innerText = "Valor Total Geral";
 
     // criando as células vazias antes do valor total geral
     let td_empty1 = tr.insertCell();
@@ -130,14 +184,17 @@ class Produto {
     let td_empty2 = tr.insertCell();
     td_empty2.colSpan = 1;
     // <i class="fa-regular fa-download"></i>
-    let td_icon = tr.insertCell();
-    td_icon.innerHTML = '<i class="fa-solid fa-download"></i>';
+    let td_iconUpload = tr.insertCell();
+    td_iconUpload.innerHTML = '<i class="fa-solid fa-download"></i>';
     // adicionando classe CSS à última linha
     tr.classList.add('total-row');
-    
 
-           
-        }
+    td_iconUpload.classList.add('icon2');
+    td_iconUpload.onclick = function() {
+        salvarProdutorSafra();
+    }    
+        };
+
 
     adicionar(produto) {
         
@@ -183,7 +240,7 @@ class Produto {
         let produto = {};
 
         produto.id = this.id;
-        produto.produto = document.getElementById('produto').value;
+        produto.prod = document.getElementById('produto').value;
         // produto.produto = retornaOption('produto');
         produto.embalagem = document.getElementById('embalagem').value;
         produto.segmento = document.getElementById('segmento').value;
@@ -198,9 +255,6 @@ class Produto {
 
         produto.valortotal = valorTotal.toFixed(2);
         produto.vencimento = document.getElementById('vencimento').value;
-        
-
-        //console.log(produto);
 
         return produto; 
         
@@ -209,7 +263,7 @@ class Produto {
 
     validaCampos(produto) {
         let msg ='';
-        if(produto.produto == ""){
+        if(produto.prod == ""){
             msg += ' - selecione o nome do produto \n'
         }
         if(produto.embalagem == ""){
@@ -242,22 +296,9 @@ class Produto {
         }
         return true;
     }
- 
-    // adicionar () {
-    //     this.arrayProdutos.push(produto);
-    //     console.log(this.arrayProdutos)
-    // }
- 
-    // edit() {
-    //     alert('editttttt');
-
-    //     // let produto = this.lerDados();
-    //     // console.log(produto);
-    // } 
-        
-    
+     
     limpar() {
-        document.getElementById('produto').value = 'Produto';
+        document.getElementById('produto').value = '';
         document.getElementById('embalagem').value = 'Embalagem';
         document.getElementById('segmento').value = 'Segmento';
         document.getElementById('volume').value = '';
@@ -270,7 +311,12 @@ class Produto {
 
         document.getElementById('btn1').innerText = 'Salvar';
         this.editId = null;
+
+        mostrarCampoText();
+        
     }
+
+    
     deletar(id) {
         
         let tbody = document.getElementById('tbody');
@@ -282,11 +328,27 @@ class Produto {
             }
         }
     }
+    
+    limparTudo() {
+        let tbody = document.getElementById('tbody');
+        document.querySelector('#clientes').value='';
+        document.querySelector('#safra').value='';
+        while (tbody.rows.length > 0) {
+            tbody.deleteRow(0);
+        }
+    
+        this.arrayProdutos = [];
+    }
+
+    
+    
+    
+    
 
     preparaEdicao(dados) {
         
         this.editId = dados.id;
-        document.getElementById('produto').value = dados.produto;
+        document.getElementById('produto').value = dados.prod;
         document.getElementById('embalagem').value = dados.embalagem;
         document.getElementById('segmento').value = dados.segmento;
         document.getElementById('volume').value = dados.volume;
