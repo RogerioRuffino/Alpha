@@ -263,7 +263,7 @@ class Produto {
 
     validaCampos(produto) {
         let msg ='';
-        if(produto.prod == ""){
+        if(produto.produto == ""){
             msg += ' - selecione o nome do produto \n'
         }
         if(produto.embalagem == ""){
@@ -348,7 +348,7 @@ class Produto {
     preparaEdicao(dados) {
         
         this.editId = dados.id;
-        document.getElementById('produto').value = dados.prod;
+        document.getElementById('produto').value = dados.produto;
         document.getElementById('embalagem').value = dados.embalagem;
         document.getElementById('segmento').value = dados.segmento;
         document.getElementById('volume').value = dados.volume;
