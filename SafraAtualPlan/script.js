@@ -25,6 +25,38 @@ clientesSelect.addEventListener('change', () => {
 safraSelect.addEventListener('change', () => {
     contentDiv.style.display = 'block';
 });
+// =================================================
+// Saltar campo quando presionado 2 vezes enter no input e selecionado option com click
+
+const inputs = document.querySelectorAll('.sel2');
+let lastKeyPressTime = 0;
+
+inputs.forEach((input, index) => {
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Tab') {
+      const now = new Date().getTime();
+      if (now - lastKeyPressTime < 200) {
+        event.preventDefault();
+        if (index + 1 < inputs.length) {
+          inputs[index + 1].focus();
+        } else {
+          inputs[0].focus();
+        }
+      }
+      lastKeyPressTime = now;
+    }
+  });
+
+  input.addEventListener('change', event => {
+    if (index + 1 < inputs.length) {
+      inputs[index + 1].focus();
+    } else {
+      inputs[0].focus();
+    }
+  });
+});
+
+// ==================================================
 
 
 
